@@ -14,7 +14,8 @@
         "laravolt/avatar": "^1.2",
         "google/recaptcha": "^1.1",
         "laracasts/matryoshka": "^0.1.0",
-        "sammyk/laravel-facebook-sdk": "^3.3"
+        "sammyk/laravel-facebook-sdk": "^3.3",
+        "dompdf/dompdf": "^0.6.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

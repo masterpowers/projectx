@@ -14,8 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         'facebook/canvas',
         'facebook/page-tab',
-        // Insert All Canvas Endpoint Here
         'braintree/*',
-         'stripe/*',
+        'stripe/*'
     ];
 }
