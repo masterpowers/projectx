@@ -16,8 +16,8 @@ class CheckRole
 
         return response([
             'error' => [
-                'code' => 'UNAUTHORIZE ACCESS!',
-                'description' => 'You are not authorized to access this resource.',
+                'code' => '401',
+                'description' => 'UNAUTHORIZED ACCESS!',
             ],
         ], 401);
     }

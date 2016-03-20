@@ -1,4 +1,15 @@
 {
+  "name": "royalflushnetwork",
+  "version": "1.0.0",
+  "description": "NPM Depedancy of Royal Flush Network",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    },
+  "keywords": [
+    "royalflushnetwork"
+  ],
+  "author": "Uriah Galang",
+  "license": "MIT",
   "private": true,
   "devDependencies": {
     "gulp": "^3.8.8"
