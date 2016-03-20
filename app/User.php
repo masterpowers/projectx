@@ -6,10 +6,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 use Laracasts\Matryoshka\Cacheable;
 use SammyK\LaravelFacebookSdk\SyncableGraphNodeTrait;
+// use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
      use Cacheable, HasRolesAndAbilities, SyncableGraphNodeTrait;
+    // use Billable;
     /**
      * The attributes that are mass assignable.
      *

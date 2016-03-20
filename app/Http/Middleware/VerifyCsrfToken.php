@@ -15,5 +15,7 @@ class VerifyCsrfToken extends BaseVerifier
         'facebook/canvas',
         'facebook/page-tab',
         // Insert All Canvas Endpoint Here
+        'braintree/*',
+         'stripe/*',
     ];
 }
