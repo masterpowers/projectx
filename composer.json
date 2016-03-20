@@ -15,7 +15,12 @@
         "google/recaptcha": "^1.1",
         "laracasts/matryoshka": "^0.1.0",
         "sammyk/laravel-facebook-sdk": "^3.3",
-        "dompdf/dompdf": "^0.6.2"
+        "dompdf/dompdf": "^0.6.2",
+        "cviebrock/eloquent-sluggable": "^3.1",
+        "artesaos/seotools": "^0.8.2",
+        "kalnoy/nestedset": "^4.1",
+        "webpatser/laravel-uuid": "^2.0",
+        "landish/pagination": "^1.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -162,7 +162,9 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Laravolt\Avatar\ServiceProvider::class,
         Laracasts\Matryoshka\MatryoshkaServiceProvider::class,
-        SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class
+        SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
+        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class
 
     ],
 
@@ -212,7 +214,12 @@ return [
         'Bouncer' => Silber\Bouncer\BouncerFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Avatar'    => Laravolt\Avatar\Facade::class,
-        'Facebook' => SammyK\LaravelFacebookSdk\FacebookFacade::class
+        'Facebook' => SammyK\LaravelFacebookSdk\FacebookFacade::class,
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
+        'Uuid' => Webpatser\Uuid\Uuid::class
 
     ],
 

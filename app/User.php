@@ -66,22 +66,7 @@ class User extends Authenticatable
         $this->attributes['password'] = \Hash::make($this->generatePassword(5));
         } 
     }
-
-    public function setSpId()
-    {
-     $cookie = \Cookie::has('sid');
-     try {
-            if (!$cookie) {
-                throw new \Exception('No Sponsor!');
-            }
-        } catch (\Exception $e) {
-           var_dump($e->getMessage());
-           return response()->json(['success' => false, 'errors' => $errors], 400);
-        }
-     $cookie = \Cookie::get('sid');
-     $this->attributes['sp_id'] = $cookie;
-    }
-
+    
     protected function generatePassword($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
     {
     $str = '';
@@ -90,5 +75,22 @@ class User extends Authenticatable
         $str .= $keyspace[random_int(0, $max)];
     }
     return $str;
+    }
+
+    public function hasRole($roles)
+    {
+        if ($this->is('Admin')) {
+            return true;
+        }
+
+        if (is_array($roles)) {
+            foreach ($roles as $role) {
+                if ($this->isNot($role)) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
