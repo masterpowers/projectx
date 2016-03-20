@@ -6,7 +6,15 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "pda/pheanstalk": "^3.1",
+        "predis/predis": "^1.0",
+        "guzzlehttp/guzzle": "~5.3",
+        "silber/bouncer": "^0.1.7",
+        "laravolt/avatar": "^1.2",
+        "google/recaptcha": "^1.1",
+        "laracasts/matryoshka": "^0.1.0",
+        "sammyk/laravel-facebook-sdk": "^3.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

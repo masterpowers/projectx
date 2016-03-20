@@ -155,6 +155,14 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+       
+
+       /* <---ALL YOUR INSTALLED DEPENDENCY HERE---> */
+        Silber\Bouncer\BouncerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        Laravolt\Avatar\ServiceProvider::class,
+        Laracasts\Matryoshka\MatryoshkaServiceProvider::class,
+        SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class
 
     ],
 
@@ -201,6 +209,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Bouncer' => Silber\Bouncer\BouncerFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Avatar'    => Laravolt\Avatar\Facade::class,
+        'Facebook' => SammyK\LaravelFacebookSdk\FacebookFacade::class
 
     ],
 
