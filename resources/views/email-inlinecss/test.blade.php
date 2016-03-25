@@ -1,9 +1,13 @@
 <html>
 <head>
-   
+   <style>
+   p {
+    color: red;
+    }
+   </style>
   {{ elixir('js/app.js') }}
 </head>
 <body>
-  <p style="color: red;">Test</p>
+  <p>Test</p>
 </body>
 </html>

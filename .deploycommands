@@ -13,38 +13,41 @@ php artisan db:seed
 5.) Install Node Modules Dependancy
 npm install
 
-6.) Stripped Off Unnecessary Bloat on Your CSS
+6.) Run Gulp
+gulp
+
+7.) Stripped Off Unnecessary Bloat on Your CSS
 gulp uncss
 
-7.) Remove Render Blocking Script
+8.) Remove Render Blocking Script
 gulp critical
 
-8.) Compress HTML in Cache
+9.) Compress HTML in Cache
 gulp compress
 
-9.) Inline CSS For Email
+10.) Inline CSS For Email
 gulp email
 
-9.) Whitelist All Ports Needed by Your System
+11.) Whitelist All Ports Needed by Your System
 # Forge Server Network Firewall
 - port 3001
 
-10.) Enable Gzip Compress based on Your Site Content
+12.) Enable Gzip Compress based on Your Site Content
 - Edit nginx.conf , use HTML5 Boilerplate for nginx
 
-11.) Secure Site With Let's Encrypt
+13.) Secure Site With Let's Encrypt
 
-12.) SSL Log Jam Fix
+14.) SSL Log Jam Fix
 https://laravel-news.com/2016/01/optimizing-ssl-laravel-forge/
 # Remove includeSubDomains , wont force ssl in subdomain
 # This is Needed if you Using Email Services such as Mailgun
 add_header Strict-Transport-Security "max-age=31536000";
 
-12.) Enable Cloudflare and Configure DNS
+15.) Enable Cloudflare and Configure DNS
 # Remeber to Use Full Stric if your Using SSL
 
-13.) Add to Your Daemon Socket Server to Start Every Restart
+16.) Add to Your Daemon Socket Server to Start Every Restart
 run node.js
 
-14.) Listen to Jobs and Queues.
+17.) Listen to Jobs and Queues.
 http://fideloper.com/ubuntu-beanstalkd-and-laravel4

@@ -109,18 +109,19 @@ var critical = require('critical').stream;
 // you should run critical before htmlmin
 gulp.task('critical', function () {
     return gulp.src('./storage/framework/views/*')
-        .pipe(critical({base: './storage/framework/views/', inline: true, css: ['public/css/all.css']}))
+        .pipe(critical({base: './storage/framework/views/', inline: true, css: ['public/css/uncss/all.css']}))
         .pipe(gulp.dest('./storage/framework/views/'));
 });
 
 // This Task is For Inlining CSS for Your Email
+// Uses Mail Chimp API to Inline CSS
 // Do not Use Blade include here coz it will not be process
 // This Needs The Whole HTML DOC
 
 mcInlineCss = require('gulp-mc-inline-css'),
 gulp.task('inlinecss', function() {
-  return gulp.src('./resources/views/email/*')
+  return gulp.src('./resources/views/email-inlinecss/*')
     .pipe(mcInlineCss('4fdab4a7805bca06bb0a988119c4f879-us13', false))
-    .pipe(gulp.dest('./resources/views/email-inlinecss'));
+    .pipe(gulp.dest('./resources/views/email/'));
 });
 
