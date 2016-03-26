@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+@section('seo')
+<title>{{ $title or 'Register' }}</title>
+{!! SEO::generate() !!}
+@endsection
 @section('content')
 <div class="container">
     <div class="row">

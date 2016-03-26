@@ -1,0 +1,1 @@
+@yield('seo', '<title> Get SEO NOW! </title>')

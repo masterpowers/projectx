@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('seo')
+{!! SEO::generate() !!}
+@endsection
 @section('content')
 <div class="container">
     <div class="row">
