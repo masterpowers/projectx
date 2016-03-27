@@ -13,9 +13,30 @@
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
+        'username' => $faker->username,
         'email' => $faker->safeEmail,
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(App\Product::class, function (Faker\Generator $faker) {
+	$name = $faker->name;
+    return [
+        'name' => $name,
+        'slug' => strtolower(preg_replace('/\s+/', '_', $name)),
+        'price' => $faker->numberBetween($min = 50, $max = 500),
+        'description' => $faker->paragraph,
+        'caption' => $faker->sentence,
+        'sku' => $faker->uuid
+    ];
+});
+
+$factory->define(App\Category::class, function (Faker\Generator $faker) {
+    $name = $faker->name;
+    return [
+        'name' => $name,
+        'slug' => strtolower(preg_replace('/\s+/', '_', $name)),
+        'description' => $faker->paragraph,
     ];
 });

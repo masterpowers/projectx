@@ -155,6 +155,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ViewComposerServiceProvider::class,
        
 
        /* <---ALL YOUR INSTALLED DEPENDENCY HERE---> */
@@ -164,7 +165,8 @@ return [
         Laracasts\Matryoshka\MatryoshkaServiceProvider::class,
         SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
-        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Baum\Providers\BaumServiceProvider::class
 
     ],
 

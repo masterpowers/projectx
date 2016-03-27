@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b77d5b5400a58b3adbbd06deed5baabb",
-    "content-hash": "279e031c75322ae165c8db567f2ec044",
+    "hash": "2e233ec914837f6bd3fcd8d8611d44eb",
+    "content-hash": "ce98b7390e5c6fd14a3cabcaf6bfec1f",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -57,6 +57,61 @@
                 "webmaster"
             ],
             "time": "2016-01-24 21:43:40"
+        },
+        {
+            "name": "baum/baum",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/etrepat/baum.git",
+                "reference": "9290bed862d329aaaef666a71e0a2734afc28286"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/etrepat/baum/zipball/9290bed862d329aaaef666a71e0a2734afc28286",
+                "reference": "9290bed862d329aaaef666a71e0a2734afc28286",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "5.*",
+                "illuminate/database": "5.*",
+                "illuminate/events": "5.*",
+                "illuminate/filesystem": "5.*",
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "d11wtq/boris": "~1.0.10",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Baum": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Estanislau Trepat",
+                    "email": "estanis@etrepat.com",
+                    "homepage": "http://etrepat.com"
+                }
+            ],
+            "description": "Baum is an implementation of the Nested Set pattern for Eloquent models.",
+            "keywords": [
+                "Laravel 4",
+                "database",
+                "eloquent",
+                "laravel",
+                "laravel 5",
+                "nested set"
+            ],
+            "time": "2015-03-04 12:07:54"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -227,16 +282,16 @@
         },
         {
             "name": "danielstjules/stringy",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/danielstjules/Stringy.git",
-                "reference": "5554477962a430cc5c79737ffa0fe3cb07f50d66"
+                "reference": "bd90918858ae079e34192710946449ed6c0bf795"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/5554477962a430cc5c79737ffa0fe3cb07f50d66",
-                "reference": "5554477962a430cc5c79737ffa0fe3cb07f50d66",
+                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/bd90918858ae079e34192710946449ed6c0bf795",
+                "reference": "bd90918858ae079e34192710946449ed6c0bf795",
                 "shasum": ""
             },
             "require": {
@@ -279,7 +334,7 @@
                 "utility",
                 "utils"
             ],
-            "time": "2016-03-20 00:33:13"
+            "time": "2016-03-21 20:26:21"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -947,60 +1002,6 @@
             "time": "2015-12-05 17:17:57"
         },
         {
-            "name": "kalnoy/nestedset",
-            "version": "v4.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lazychaser/laravel-nestedset.git",
-                "reference": "5524d6c2e5e21f33155e973bab5b0cdd39e41d3f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lazychaser/laravel-nestedset/zipball/5524d6c2e5e21f33155e973bab5b0cdd39e41d3f",
-                "reference": "5524d6c2e5e21f33155e973bab5b0cdd39e41d3f",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "5.2.*",
-                "illuminate/events": "5.2.*",
-                "illuminate/support": "5.2.*",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">=4.8"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "v4.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Kalnoy\\Nestedset\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alexander Kalnoy",
-                    "email": "lazychaser@gmail.com"
-                }
-            ],
-            "description": "Nested Set Model for Laravel 4-5",
-            "keywords": [
-                "database",
-                "hierarchy",
-                "laravel",
-                "nested sets",
-                "nsm"
-            ],
-            "time": "2016-03-13 06:45:35"
-        },
-        {
             "name": "landish/pagination",
             "version": "1.3.2",
             "source": {
@@ -1088,16 +1089,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.23",
+            "version": "v5.2.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "87c090845f135ca94eba903f1c8462e60e3a6e36"
+                "reference": "b73ac62506c5c2bd49d87fcb1089f7759431e173"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/87c090845f135ca94eba903f1c8462e60e3a6e36",
-                "reference": "87c090845f135ca94eba903f1c8462e60e3a6e36",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b73ac62506c5c2bd49d87fcb1089f7759431e173",
+                "reference": "b73ac62506c5c2bd49d87fcb1089f7759431e173",
                 "shasum": ""
             },
             "require": {
@@ -1110,7 +1111,7 @@
                 "monolog/monolog": "~1.11",
                 "mtdowling/cron-expression": "~1.0",
                 "nesbot/carbon": "~1.20",
-                "paragonie/random_compat": "~1.1",
+                "paragonie/random_compat": "~1.4",
                 "php": ">=5.5.9",
                 "psy/psysh": "0.7.*",
                 "swiftmailer/swiftmailer": "~5.1",
@@ -1212,7 +1213,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-03-14 14:22:33"
+            "time": "2016-03-25 17:12:52"
         },
         {
             "name": "laravolt/avatar",
@@ -1916,16 +1917,16 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.2.2",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "3aacad8bf10c7d83e6fa2089d413529888c2bedf"
+                "reference": "8ffacee1171e33a1c129f424bf1ec36e062eba82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/3aacad8bf10c7d83e6fa2089d413529888c2bedf",
-                "reference": "3aacad8bf10c7d83e6fa2089d413529888c2bedf",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/8ffacee1171e33a1c129f424bf1ec36e062eba82",
+                "reference": "8ffacee1171e33a1c129f424bf1ec36e062eba82",
                 "shasum": ""
             },
             "require": {
@@ -1956,7 +1957,7 @@
                 }
             ],
             "description": "A lightweight implementation of CommonJS Promises/A for PHP",
-            "time": "2016-02-26 19:09:02"
+            "time": "2016-03-24 21:20:22"
         },
         {
             "name": "sammyk/laravel-facebook-sdk",

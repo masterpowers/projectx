@@ -47,7 +47,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::group(
         	[
         	'as'		=>	'user@',
-        	'prefix'	=> 'user',
+        	'prefix'	=> 'user'
         	], function() {
         		Route::get('/', ['as' => 'index', 'uses' => 'UserController@index']);
         		Route::post('/', ['as' => 'store', 'uses' => 'UserController@store']);
@@ -57,7 +57,45 @@ Route::group(['middleware' => 'web'], function () {
         		Route::patch('/{user}', ['as' => 'update', 'uses' => 'UserController@update']);
         		Route::get('/{user}/delete', ['as' => 'delete', 'uses' => 'UserController@destroy']);
 
-        	});
+        });
+
+        Route::group(
+            [
+            'as'        =>  'product@',
+            'prefix'    =>   'products'
+            ], function() {
+                Route::get('/', ['as' => 'index', 'uses' => 'ProductController@index']);
+                Route::post('/', ['as' => 'store', 'uses' => 'ProductController@store']);
+                Route::get('/create', ['as' => 'create', 'uses' => 'ProductController@create']);
+                Route::get('/{product}', ['as' => 'show', 'uses' => 'ProductController@show']);
+                Route::get('/{product}/edit', ['as' => 'edit', 'uses' => 'ProductController@edit']);
+                Route::patch('/{product}', ['as' => 'update', 'uses' => 'ProductController@update']);
+                Route::get('/{product}/delete', ['as' => 'delete', 'uses' => 'ProductController@destroy']);
+
+        });
 
     });
+
+Route::group(
+        [
+        'namespace' => 'Product',
+        'as'         => 'product::',
+        'prefix'     => 'products'
+        ],function(){
+        Route::get('/', ['as' => 'index', 'uses' => 'ProductController@index']);
+        Route::get('/{product}', ['as' => 'show', 'uses' => 'ProductController@show']);
+
+        Route::group(
+            [
+            'as'         => 'user@'
+            ],function(){
+        Route::post('/{product}/review', ['as' => 'review', 'uses' => 'ProductController@review']);
+        });
+        
+
+        
+
+        });
+
+    
 });

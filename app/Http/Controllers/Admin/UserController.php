@@ -24,7 +24,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.user.index')->with(['users' => $users]);
+        return view('admin.user.index')->with(compact('user'));
     }
 
     /**
@@ -52,7 +52,7 @@ class UserController extends Controller
         ]);
         $user = User::create($request->all());
         // $user->profile()->create($request->all());
-        return redirect()->route('admin::user@index');
+        return redirect()->route('admin::user@show',['id' => $user->id]);
     }
 
     /**
@@ -63,7 +63,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('admin.user.show')->with(['user' => $user]);
+        return view('admin.user.show')->with(compact('user'));
     }
 
     /**
@@ -74,7 +74,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.user.edit')->with(['user' => $user]);
+        return view('admin.user.edit')->with(compact('user'));
     }
 
     /**
