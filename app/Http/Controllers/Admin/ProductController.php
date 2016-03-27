@@ -13,15 +13,6 @@ use App\Product;
 
 class ProductController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * [index Return Paginated View of All Products]
@@ -30,42 +21,43 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view()->make('home')->with(compact('product'));
+        return view()->make('admin.product.index')->with(compact('products'));
     }
 
     public function create()
     {
-        //
+        return view()->make('admin.product.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        //
+        // Create Form Request
     }
     /**
      * [show Individual Product]
      * @param  Product $product [id]
      * @return [type]           [view]
      */
-    public function show(Product $product, Response $response)
+    public function show(Product $product)
     {
-        // return view('home')->with(['product' => $product]);
-        return response()->json(view()->make('home')->with(compact('product'))->render());
+        return view()->make('admin.product.show');
+        // Response $response
+        // return response()->json(view()->make('home')->with(compact('product'))->render());
     }
 
-    public function edit()
+    public function edit(Product $product)
     {
-        //
+        return view()->make('admin.product.edit');
     }
 
     public function update()
     {
-        //
+        // Create Form Request
     }
 
     public function destroy()
     {
-        //
+        // Create Form Request
     }
 
 

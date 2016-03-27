@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +25,6 @@ Route::get('/', function () {
 
 
 Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-
-    Route::get('/home', 'HomeController@index');
 
     Route::group(
     	[
@@ -43,11 +37,11 @@ Route::group(['middleware' => 'web'], function () {
         // Controllers Within The "App\Http\Controllers\Admin" Namespace
         // Matches the /admin URL
         // Extend this to the BaseController to Match Namespacing
-        Route::get('/', ['as' => 'home', 'uses' => 'DashboardController@index']);
+        Route::get('/', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
         Route::group(
         	[
         	'as'		=>	'user@',
-        	'prefix'	=> 'user'
+        	'prefix'	=> 'users'
         	], function() {
         		Route::get('/', ['as' => 'index', 'uses' => 'UserController@index']);
         		Route::post('/', ['as' => 'store', 'uses' => 'UserController@store']);
@@ -74,28 +68,91 @@ Route::group(['middleware' => 'web'], function () {
 
         });
 
-    });
-
-Route::group(
-        [
-        'namespace' => 'Product',
-        'as'         => 'product::',
-        'prefix'     => 'products'
-        ],function(){
-        Route::get('/', ['as' => 'index', 'uses' => 'ProductController@index']);
-        Route::get('/{product}', ['as' => 'show', 'uses' => 'ProductController@show']);
-
         Route::group(
             [
-            'as'         => 'user@'
+            'as'        =>  'category@',
+            'prefix'    => 'categories'
+            ], function() {
+                Route::get('/', ['as' => 'index', 'uses' => 'CategoryController@index']);
+                Route::post('/', ['as' => 'store', 'uses' => 'CategoryController@store']);
+                Route::get('/create', ['as' => 'create', 'uses' => 'CategoryController@create']);
+                Route::get('/{category}', ['as' => 'show', 'uses' => 'CategoryController@show']);
+                Route::get('/{category}/edit', ['as' => 'edit', 'uses' => 'CategoryController@edit']);
+                Route::patch('/{category}', ['as' => 'update', 'uses' => 'CategoryController@update']);
+                Route::get('/{category}/delete', ['as' => 'delete', 'uses' => 'CategoryController@destroy']);
+
+        });
+
+    });
+
+    Route::group(
+            [
+            'namespace' => 'Guest',
+            'as'         => 'guest::'
             ],function(){
-        Route::post('/{product}/review', ['as' => 'review', 'uses' => 'ProductController@review']);
+            Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+            Route::group(
+                [
+                'as'         => 'product@',
+                'prefix'     => 'products'
+                ],function(){    
+            Route::get('/', ['as' => 'index', 'uses' => 'ProductController@index']);
+            Route::get('/{product}', ['as' => 'show', 'uses' => 'ProductController@show']);
+            Route::get('/{product}/review', ['as' => 'getReview', 'uses' => 'ProductController@getReview']); 
+            });
+
+            Route::group(
+                [
+                'as'         => 'category@',
+                'prefix'     => 'categories'
+                ],function(){
+            Route::get('/', ['as' => 'index', 'uses' => 'CategoryController@index']);
+            Route::get('/{product}', ['as' => 'show', 'uses' => 'CategoryController@show']);    
+            });
+            
+
+    });
+    Route::group(
+                [
+                'namespace' => 'Auth',
+                'as'         => 'guest::auth@'
+                ],function(){
+        Route::group(
+            [
+            'middleware' => ['guest']
+            ],function(){
+            Route::get('login', ['as' => 'showLoginForm', 'uses' => 'AuthController@showLoginForm']);
+            Route::post('login', ['as' => 'login', 'uses' => 'AuthController@login']);
+            // Registration Routes...
+            Route::get('register', ['as' => 'showRegistrationForm', 'uses' => 'AuthController@showRegistrationForm']);
+            Route::post('register', ['as' => 'register', 'uses' => 'AuthController@register']);
+
+            // Password Reset Routes...
+            Route::get('password/reset/{token?}', ['as' => 'showResetForm', 'uses' => 'PasswordController@showResetForm']);
+            Route::post('password/email', ['as' => 'sendResetLinkEmail', 'uses' => 'PasswordController@sendResetLinkEmail']);
+            Route::post('password/reset', ['as' => 'reset', 'uses' => 'PasswordController@reset']);
         });
-        
+            Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);
+    });
 
-        
+    
 
+    Route::group(
+        [
+        'namespace' => 'User',
+        'as'         => 'user::',
+        'middleware' => ['auth']
+        ], function() {
+            Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
+            Route::group(
+            [
+            'as'         => 'product@',
+            'prefix'     => 'products'
+            ],function(){
+        
+        Route::post('/{product}/review', ['as' => 'submitReview', 'uses' => 'ProductController@review']);
         });
 
+    });
     
 });

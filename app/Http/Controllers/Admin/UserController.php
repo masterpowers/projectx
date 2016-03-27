@@ -10,13 +10,6 @@ use App\User;
 class UserController extends Controller
 {
     /**
-     * [__construct Injected Auth]
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    /**
      * Display all Users
      *
      * @return \Illuminate\Http\Response
@@ -24,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.user.index')->with(compact('user'));
+        return view('admin.user.index')->with(compact('users'));
     }
 
     /**
