@@ -3,7 +3,7 @@
 <div class="card">
     <!-- Card Image -->
     <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="{{ $product->image }}">
+      <img class="activator" src="/img/avatar.png">
     </div>
     <br>
     <!-- Products Rating Cache -->

@@ -37,7 +37,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $categories = $product->categories;
-
+        $product->increment('views');
         return view()->make('guest.product.show')->with(compact('product', 'categories'));
     }
 

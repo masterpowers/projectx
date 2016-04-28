@@ -11,26 +11,23 @@
 
 <!-- LEFT DIV -->
 <!-- Show This Filter For Medium and Large Device -->
-<div class="col s12 m4 l4 hide-on-small-only">
-{!! Form::open(['route' => 'guest::product@index', 'method' => 'GET', 'class' => 'col s12']) !!} 
+<div class="col m4 l4 hide-on-med-and-down">
+{!! Form::open(['route' => 'guest::product@index', 'method' => 'GET', 'class' => '']) !!} 
 @include('forms.filters')
 <br>
-<div class="row">
-{!! Form::submit('Filter', ['class' => 'btn offset-s1 col s10']) !!}
-</div>
 {!! Form::close() !!}
 </div>
 <!-- End Filter For Large and Medium Devices -->
 <!-- Show Button Filter on Small Devices On Click -->
-<div class="row hide-on-med-and-up">
-<a class="waves-effect waves-light btn modal-trigger col s10 offset-s1" href="#filterModal" id="filters">Filter Products</a>
+<div class="row hide-on-large-only">
+<a class="waves-effect waves-light btn modal-trigger col s10 offset-s1" href="#filterModal" id="filters">Filter Products<i class="large material-icons right">local_library</i></a>
 </div>
 <!-- End Filter for Small Devices -->
 <!-- Show Filter Modal -->
 <div id="filterModal" class="modal modal-fixed-footer">
 {!! Form::open(['route' => 'guest::product@index', 'method' => 'GET', 'class' => '']) !!} 
 <div class="modal-content">
-@include('forms.filters')
+@include('forms.mobilefilters')
 </div>
 <div class="modal-footer">
 {!! Form::submit('Filter', ['class' => 'btn col s12']) !!}
@@ -42,12 +39,12 @@
 
 <!-- RIGHT DIV -->
 
-<div class="col s12 m8 l8">
+<div class="col s12 m12 l8">
 <!-- Check if there is Product -->
 @if($products->count())
 @foreach ($products as $product)
 <!-- START Card Column -->
-<div class="col s12 m6 l4">
+<div class="col s12 m4 l4">
 @include('partials.card.product', ['product' => $product])
 </div> 
 <!-- END Card Column -->

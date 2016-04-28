@@ -33,7 +33,7 @@ for ( var i = 0; i < sliders.length; i++ ) {
     		prefix: '₱',
 		})
 	});
-sliders[i].noUiSlider.on('change', function( values, handle ) {
+sliders[i].noUiSlider.on('change', function( valucalculatores, handle ) {
 	var currency = values[handle];
 	var number = Number(currency.replace(/[^0-9\.]+/g,""));
 	sliderhandle[handle].value = number;
@@ -41,5 +41,8 @@ sliders[i].noUiSlider.on('change', function( values, handle ) {
 });
 
 }
+$('.pinner').pushpin({ top: 130,
+      bottom: 1640,
+      offset: 70 });
 </script>
 @endsection
