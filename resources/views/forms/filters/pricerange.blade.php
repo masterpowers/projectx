@@ -55,7 +55,9 @@ $('.pinner').pushpin({ top: pinnedheight,
 if(windowWidth <= 1024){
 	$('.pinner').css('width', '350px');
 }
-
+if(windowWidth >= 1280){
+	$('.pinner').css('width', '470px');
+}
 
 </script>
 @endsection

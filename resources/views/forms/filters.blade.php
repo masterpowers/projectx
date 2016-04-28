@@ -1,4 +1,4 @@
-<div class="pinner row" style="width: 470px;">
+<div class="pinner row">
 @yield('filter_categorylist',view()->make('forms.filters.categorylist')->render())
 @yield('filter_pricing', view()->make('forms.filters.pricing')->render())
 @yield('filter_reviewcount', view()->make('forms.filters.reviewcount')->render())
