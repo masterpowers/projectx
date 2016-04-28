@@ -26,7 +26,7 @@ class Category extends Node
     {
         return $this->morphMany('App\Seo', 'seoble');
     }
-
+    // You Can Add withPivot if you have Other Column you want to Include!
     public function products()
     {
     return $this->belongsToMany('App\Product')->withTimestamps();

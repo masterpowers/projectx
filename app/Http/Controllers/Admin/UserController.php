@@ -38,11 +38,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-        'username' => 'required|max:255',
-        'email' => 'required|email|max:255|unique:users',
-        'password' => 'required|min:6|confirmed',
-        ]);
+        $this->validate($request, $this->rules);
         $user = User::create($request->all());
         // $user->profile()->create($request->all());
         return redirect()->route('admin::user@show',['id' => $user->id]);
@@ -80,7 +76,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
-        return redirect()->route('admin::user@show');
+        return redirect()->route('admin::user@show', ['id' => $user->id]);
     }
 
     /**
@@ -97,5 +93,15 @@ class UserController extends Controller
         }
         dd('Fool!... You Cannot Delete an Administrator!...');
         
+    }
+
+    protected function rules()
+    {
+        return $rules =
+        [
+        'username' => 'required|max:255|unique:users,username',
+        'email' => 'required|email|max:255|unique:users',
+        'password' => 'required|min:6',
+        ];
     }
 }

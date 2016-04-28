@@ -1,0 +1,110 @@
+.container .__container {
+  padding-top: 10px;
+}
+.page__title {
+  color: #ef9a9a;
+  text-align: center;
+  background-color: #e0f2f1;
+  border-style: dotted;
+  border-color: #ef9a9a;
+  padding: 10px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+p {
+  font-size: 1.1em;
+  margin: 1em 0;
+}
+.description {
+  margin: 1em auto 2.25em;
+}
+body {
+  color: #333;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+  }
+ul {
+  list-style: none;
+  padding: 0;
+}
+ul .inner {
+  padding-left: 1em;
+  overflow: hidden;
+  display: none;
+}
+ul .inner.show {
+  /*display: block;*/
+}
+ul li {
+  /*margin: .5em 0; */
+}
+ul li a.toggle {
+  width: 100%;
+  display: block;
+  background: #26a69a;
+  color: #ffffff ;
+  padding: .75em;
+  border-radius: 0.15em;
+  transition: background .3s ease;
+  
+}
+ul li a.toggle:hover {
+  background: #e0e0e0;
+  color: #4db6ac;
+}
+
+.drag-target {
+    height: 100%;
+    width: 5px;
+    position: fixed;
+    top: 0;
+    z-index: 995;
+}
+#breadcrumb {
+  margin-left: 2.5em;
+}
+.breadcrumb:before{
+  content:'\E5CC';color:#9fa8da;
+}
+li.user-details {
+    background: url(/img/user-bg.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* overflow: hidden; */
+    margin-bottom: 15px;
+    padding: 15px 0px 0px 15px;
+}
+.user-details .row {
+  margin: 0;
+}
+
+ul.side-nav.leftside-navigation .profile-btn {
+  margin: 0;
+  text-transform: capitalize;
+  padding: 0;
+  text-shadow: 1px 1px 1px #444;
+  font-size: 15px;
+}
+.user-role {
+  color: #fff;
+  margin-top: -16px;
+  font-size: 13px;
+  text-shadow: 1px 1px 1px #444;
+}
+
+.icon__lower {
+  padding-top: 20px;
+}
+
+.help-block {
+  color: #ef9a9a;
+  padding-left: 2.8em;
+}

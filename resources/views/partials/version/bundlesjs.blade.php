@@ -1,0 +1,1 @@
+<script src="{{ elixir('js/bundle.js') }}"></script>

@@ -1,0 +1,1 @@
+@yield('searchbar', view()->make('partials.search.default')->render())

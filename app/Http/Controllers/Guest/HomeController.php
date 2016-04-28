@@ -19,12 +19,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $this->seo()->setTitle('HOMEPAGE - GUEST!');
-        $this->seo()->setDescription('This is my page description');
-        // $this->seo()->setCanonical(route('admin::user@index'));
-        $this->seo()->opengraph()->setUrl(route('guest::home'));
-        $this->seo()->opengraph()->addProperty('type', 'articles');
-        $this->seo()->twitter()->setSite('@iyuri305');
-        return view('home');
+       
+        return view('guest.home');
     }
 }

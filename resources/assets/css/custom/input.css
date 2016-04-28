@@ -1,0 +1,12 @@
+.form {
+	background-color: #e0f2f1;
+	border-style: dotted;
+	border-color: #ef9a9a;
+	border-radius: 25px;
+}
+.input-field .font__label {
+	color: #00897b;
+}
+.icon__lower {
+	padding-top: 20px;
+}

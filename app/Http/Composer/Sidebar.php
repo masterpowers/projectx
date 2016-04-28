@@ -4,7 +4,7 @@ namespace App\Http\Composer;
 
 use Illuminate\Contracts\View\View;
 // use App\Repository\Repository;
-use App\User;
+use App\Category;
 
 class Sidebar
 {
@@ -18,7 +18,7 @@ class Sidebar
 	// by appending @customMethod
 	public function compose(View $view)
 	{
-	
-	$view->with('auth', User::latest()->first());
+	$categories = Category::all()->toHierarchy();
+	$view->with(compact('categories'));
 	}
 }

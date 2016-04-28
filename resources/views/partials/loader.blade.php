@@ -1,0 +1,1 @@
+@yield('loader', view()->make('partials.loader.default')->render())

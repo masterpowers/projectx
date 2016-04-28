@@ -1,1 +1,12 @@
-This will Show Your Specified Category
+@extends('layouts.app')
+
+
+@section('content')
+id: {{ $category->id }}
+<br>
+name : {{ $category->name }}
+
+
+
+@endsection
+

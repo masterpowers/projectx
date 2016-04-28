@@ -2,57 +2,90 @@ var elixir = require('laravel-elixir');
 var gutils = require('gulp-util');
 var gulp = require('gulp');
 
-require('laravel-elixir-vueify');
+/*
+ |--------------------------------------------------------------------------
+ | Elixir Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Make the Directory Writtable
+ | chmod -R 777 resources
+ | chmod -R 777 public
+ |
+ */
 
-if(elixir.config.production == true){
-    process.env.NODE_ENV = 'production';
-}
-
-if(gutils.env._.indexOf('watch') > -1 && elixir.config.production != true){
-    elixir.config.js.browserify.plugins.push({
-        name: "browserify-hmr",
-        options : {}
-    });
-}
-// this is the Default task run "gulp"
 elixir(function(mix) {
-    mix.sass(['app.scss'], './resources/assets/css/app.css');
-    // List All CSS dependancy Here
+	// Compile Materialize Sass , Change Output Point As Necessary
+    mix.sass(['materialize.scss'], './resources/assets/css/app.css');
+    // Comment Here Css You Wont Use!
     mix.styles([
-        'normalize.css',
-        'main.css',
-        'app.css'
-    ], 'public/css');
-    // add here other js
-    mix.browserify(['app.js']);
-    // Bust the Cache with New Version of CSS and JS
-    mix.version([
-      'public/css/all.css',
-      'public/css/uncss/*.css',
-      'public/js/bundle.js']);
+        'app.css',
+        'custom/materialize-tags.css',
+        'custom/parsley.css',
+        'custom/google-recaptcha.css',
+        'custom/main.css', // This  Has our Own CSS
+        'custom/input.css', // Materialize Form Custom CSS
+        'custom/form.css', // Login , Register And Reset CSS
+        'custom/jqueryui.css',
+        'custom/star.css',
+        'custom/nouislider.css'
+    ], './public/css/all.css');
+    // Comment Here JS You Wont Use!, Change Output Point As Necessary
+    mix.scripts([
+    	'jquery.js',
+        'jquery-ui.min.js',
+    	'parsley.js',
+    	// 'typeahead.js',
+        'materialize/initial.js',
+		'materialize/jquery.easing.1.3.js',
+		'materialize/animation.js',
+		'materialize/velocity.min.js',
+		'materialize/hammer.min.js',
+		'materialize/jquery.hammer.js',
+		'materialize/global.js',
+		'materialize/collapsible.js',
+		'materialize/dropdown.js',
+		'materialize/leanModal.js',
+		'materialize/materialbox.js',
+		'materialize/parallax.js',
+		'materialize/tabs.js',
+		'materialize/tooltip.js',
+		'materialize/waves.js',
+		'materialize/toasts.js',
+		'materialize/sideNav.js',
+		'materialize/scrollspy.js',
+		'materialize/forms.js',
+		'materialize/slider.js',
+		'materialize/cards.js',
+		'materialize/chips.js',
+		'materialize/pushpin.js',
+		'materialize/buttons.js',
+		'materialize/transitions.js',
+		'materialize/scrollFire.js',
+		'materialize/character_counter.js',
+		'materialize/date_picker/picker.js',
+		'materialize/date_picker/picker.date.js',
+        'nouislider.js'
+		// 'jquery.star.rating.js',
+		// 'star.js'
+		// 'materialize-tags.js',
+		
+
+    // ], './resources/assets/js/app.js');
+    ], './public/js/all.js');
+    // Copy Fonts
+    // mix.copy('resources/assets/fonts/', 'public/fonts/');
+    // This is For Cache Busting Enable this if Needed!
+    // mix.version([
+      // 'public/css/all.css',
+      // 'public/css/page/uncss/*.css',
+      // 'public/js/bundle.js']);
+
     
-    if(gutils.env._.indexOf('watch') > -1 && elixir.config.production != true){
-        mix.browserSync({
-           files: [
-               elixir.config.appPath + '/**/*.php',
-               elixir.config.get('public.css.outputFolder') + '/**/*.css',
-               elixir.config.get('public.versioning.buildFolder') + '/rev-manifest.json',
-               'resources/views/**/*.php'
-           ],
-           // Edit this For Your Site Name
-           proxy: 'royalflushnetwork.dev',
-           // Specify Port
-           port:2221,
-           ui: {
-              port:2222
-           }
-        });
-    }
-    // Use the Final Versioned Fill in Blade
-    // {{ elixir('css/all.scss') }} / {{ elixir('js/app.js') }}
-    // <link rel="stylesheet" href="{{ elixir('css/all.css') }}">
-    // <script type="text/javascript" href="{{ elixir('js/app.js') }}"
+
 });
+/**
+ * THE FOLLOWING TASK IS FOR OPTIMIZING EACH PAGE
+ */
 
 // This Task is for Removing Uncessary Bloat CSS 
 // This Will Removed Unused CSS From Your CSS Framework
@@ -65,19 +98,23 @@ var nano = require('gulp-cssnano');
 
 // Note You can use the all.css final output or 
 // Use Sass then concat you vendor css 
+// Change the Entry Point If you Will Use this!
 gulp.task('uncss', function () {
-    return gulp.src('./public/css/all.css') 
+    return gulp.src('./public/css/page/all.css') 
         // .pipe(sass())
         // .pipe(concat('./resources/assets/css/main.css'))
         .pipe(uncss({
           // List all Links On Your Site
-            html: ['http://royalflushnetwork.dev/', 
-            'http://royalflushnetwork.dev/login',
-            'http://royalflushnetwork.dev/register'
+          // Preprared Way is to Use 1 Link then Use UNCSS
+          // then Override the @section('css') on that page.
+          // Remove All Middleware Such as Auth!
+            html: ['http://royalflushnetwork.dev/admin', 
+            // 'http://royalflushnetwork.dev/login',
+            // 'http://royalflushnetwork.dev/register'
             ]
         }))
         .pipe(nano())
-        .pipe(gulp.dest('./public/css/uncss'));
+        .pipe(gulp.dest('./public/css/page/uncss'));
 });
 
 
@@ -124,4 +161,3 @@ gulp.task('inlinecss', function() {
     .pipe(mcInlineCss('4fdab4a7805bca06bb0a988119c4f879-us13', false))
     .pipe(gulp.dest('./resources/views/email/'));
 });
-

@@ -2,21 +2,32 @@
 
 namespace App\Http\Controllers\Guest;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\ProductFilters;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    protected $request;
+
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
     /**
-     * [index Return Paginated View of All Products]
+     * [index Return All Products by Default , and Result by Filters]
      * @return [type] [view]
      */
-    public function index()
+    public function index(ProductFilters $filters)
     {
-        $products = Product::all();
-        return view()->make('product.index')->with(compact('products'));
+
+        $queries = Product::filter($filters)->published()->distinct();
+        $products = $queries->select('id', 'name', 'description', 'caption', 'price', 'image', 'slug', 'sku', 'thumbnail', 'options', 'rating_cache', 'rating_count', 'views')->paginate();
+        $this->appendQueryStrings($products);
+        return view()->make('guest.product.index')->with(compact('products'));
+
     }
     /**
      * [show Individual Product]
@@ -25,13 +36,20 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        // return view('home')->with(['product' => $product]);
-        return view()->make('product.show')->with(compact('product'));
+        $categories = $product->categories;
+
+        return view()->make('guest.product.show')->with(compact('product', 'categories'));
     }
 
-    public function getReview()
+    private function appendQueryStrings($products)
     {
-    	$reviews = Review::all();
-        return view()->make('product.review')->with(compact('reviews'));
+        foreach ($this->queries() as $key => $value) {
+            $products->appends([$key => $value]);
+        }
     }
+    private function queries()
+    {
+        return $this->request->all();
+    }
+
 }

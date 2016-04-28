@@ -21,22 +21,29 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Product::class, function (Faker\Generator $faker) {
-	$name = $faker->name;
+	$name = $faker->words($nb = 2, $asText = true);
     return [
         'name' => $name,
-        'slug' => strtolower(preg_replace('/\s+/', '_', $name)),
+        'slug' => strtolower(preg_replace('/\s+/', '-', $name)),
         'price' => $faker->numberBetween($min = 50, $max = 500),
         'description' => $faker->paragraph,
         'caption' => $faker->sentence,
-        'sku' => $faker->uuid
+        'sku' => $faker->uuid,
+        'image' => $faker->imageUrl($width = 640, $height = 480),
+        'thumbnail' => $faker->imageUrl($width = 150, $height = 150),
+        'published' => $faker->randomElement($array = array (true,false)),
+        'views' => $faker->numberBetween($min = 1000, $max = 9000),
+        'rating_cache' => $faker->numberBetween($min = 0, $max = 5),
+        'rating_count' => $faker->numberBetween($min = 1000, $max = 9000)
+
     ];
 });
 
 $factory->define(App\Category::class, function (Faker\Generator $faker) {
-    $name = $faker->name;
+    $name = $faker->words($nb = 2, $asText = true);
     return [
         'name' => $name,
-        'slug' => strtolower(preg_replace('/\s+/', '_', $name)),
+        'slug' => strtolower(preg_replace('/\s+/', '-', $name)),
         'description' => $faker->paragraph,
     ];
 });

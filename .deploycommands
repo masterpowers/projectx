@@ -51,3 +51,12 @@ run node.js
 
 17.) Listen to Jobs and Queues.
 http://fideloper.com/ubuntu-beanstalkd-and-laravel4
+
+18.) During Truncate
+\DB::statement("SET foreign_key_checks = 0");
+Then Do Product::truncate()
+
+19.) to fix placeholder using form select add this on
+FormBuilder.php laravel/collective
+protected function placeholderOption
+$options['disabled'] = 'disabled';

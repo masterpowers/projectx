@@ -1,0 +1,1 @@
+@yield('sidebar', view()->make('partials.sidebar.default')->render())

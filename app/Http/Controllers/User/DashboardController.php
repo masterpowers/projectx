@@ -25,6 +25,6 @@ class DashboardController extends Controller
         $this->seo()->opengraph()->setUrl(route('user::dashboard'));
         $this->seo()->opengraph()->addProperty('type', 'articles');
         $this->seo()->twitter()->setSite('@iyuri305');
-        return view('home');
+        return view('user.dashboard');
     }
 }

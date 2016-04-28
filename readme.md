@@ -54,9 +54,50 @@ Majority of the Tutorials are Made using MAC OS Users, Such as Laracast. As a Wi
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
 
-## Documentation
+## Customisation
 
-Go to Facebook Groups :)
+After you Install it, You Will be given a Fresh install of laravel, You may Want to Override its META, SEO, FONT , CSS and, ABOVE FOLD CONTENT
+all default file is at resources->view->partials->head/*
+<!-- Default Header of Fresh Laravel Installation -->
+@section('meta')
+
+@endsection
+@section('seo')
+
+@endsection
+@section('font')
+
+@endsection
+@section('css')
+
+@endsection
+@section('critical')
+
+@endsection
+<!-- End Header -->
+
+There are Magic Task to Use To Give you Critical CSS and UNCSS or the Trimmed Version of Your CSS.
+
+gulp compress = html minifier of your view storage
+gulp uncss = remove unneccessary bloat of css from your vendor css 
+gulp critical = outputs the critical above fold content css to your view storage
+gulp inlinecss = inlinecss for you email blade 
+
+you should run uncss + critical then last is the compress for google optimization of your site
+
+You may include the uncss using 
+@include('partials.version.uncss')
+@include('partials.version.allcss')
+@include('partials.version.bundlejs')
+
+## deploy commands
+you may need to create your own database or edit as per you .env file
+php artisan migrate = Migrate the Database
+php artisan bouncer:seed = Seed the Roles and Permission
+php artisan db:seed = Seed the Admin Account
+
+## Variables Always Available in your view
+Go to your ViewComposerServiceProvider and Edit...
 
 ## License
 

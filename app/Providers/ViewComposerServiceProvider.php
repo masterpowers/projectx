@@ -14,9 +14,17 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->composeNavBar();
-        $this->composeFooter();
+        $this->composeHeader();
         $this->composeSidebar();
+        $this->composeMenu();
+        $this->composeProduct();
+        $this->composeFilterCategoryList();
+        $this->composeFilterPricing();
+        $this->composeFilterReviewCount();
+        $this->composeFilterPopular();
+        $this->composeFilterStarrating();
+        $this->composeFilterPricerange();
+
         // $this->composeCart();
         // $this->composeUserWidget();
         // $this->composeProductWidget();
@@ -38,18 +46,52 @@ class ViewComposerServiceProvider extends ServiceProvider
         //
     }
 
-    private function composeNavBar()
+    private function composeHeader()
     {
-    view()->composer('partials.navbar', 'App\Http\Composer\Navbar');
-    }
-
-    private function composeFooter()
-    {
-    view()->composer('partials.footer', 'App\Http\Composer\Footer');
+    view()->composer('partials.header.default', 'App\Http\Composer\Header');
     }
 
     private function composeSidebar()
     {
-    view()->composer('partials.footer', 'App\Http\Composer\Sidebar');
+    view()->composer('partials.sidebar.default', 'App\Http\Composer\Sidebar');
     }
+
+    private function composeMenu()
+    {
+    view()->composer('partials.menu.default', 'App\Http\Composer\Menu');
+    }
+
+    private function composeProduct()
+    {
+    view()->composer('partials.content.product', 'App\Http\Composer\Product');	
+    }
+
+    private function composeFilterCategoryList()
+    {
+        view()->composer('forms.filters.categorylist', 'App\Http\Composer\Filters\Categorylist');
+    }
+    private function composeFilterPricing()
+    {
+        view()->composer('forms.filters.pricing', 'App\Http\Composer\Filters\Pricing');
+    }
+    private function composeFilterReviewCount()
+    {
+        view()->composer('forms.filters.reviewcount', 'App\Http\Composer\Filters\Reviewcount');
+    }
+    private function composeFilterPopular()
+    {
+        view()->composer('forms.filters.popular', 'App\Http\Composer\Filters\Popular');
+    }
+    private function composeFilterStarrating()
+    {
+        view()->composer('forms.filters.starrating', 'App\Http\Composer\Filters\Starrating');
+    }
+    private function composeFilterPricerange()
+    {
+        view()->composer('forms.filters.pricerange', 'App\Http\Composer\Filters\Pricerange');
+    }
+
+
+
+
 }

@@ -20,18 +20,22 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::all()->toHierarchy();
         return view()->make('admin.category.index')->with(compact('categories'));
     }
 
     public function create()
     {
-        return view()->make('admin.category.create');
+        // This will Spit Out All The Categories To Attach the Parent!
+        $categories = Category::lists('id');
+        return view()->make('admin.category.create')->with(compact('categories'));
     }
 
     public function store(Request $request)
     {
-        // Create Form Request
+        $this->validate($request, $this->rules);
+        $category = Category::create($request->all());
+        return redirect()->route('admin::category@show', ['category' => $category->slug]);
     }
     /**
      * [show Individual Product]
@@ -40,28 +44,26 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view()->make('admin.category.show');
-        // Response $response
-        // return response()->json(view()->make('home')->with(compact('product'))->render());
+        $category = $category->with('products')->get();
+        return view()->make('admin.category.show')->with(compact('category'));
     }
 
     public function edit(Category $category)
     {
-        return view()->make('admin.category.edit');
+        return view()->make('admin.category.edit')->with(compact('category'));
     }
 
-    public function update()
+    public function update(Request $request, Category $category)
     {
-        // Create Form Request
+        $this->validate($request, $this->rules);
+        $category->update($request->all())->resluggify();
+        return redirect()->route('admin::category@show', ['category' => $category->slug]);
     }
 
-    public function destroy()
+    public function destroy(Category $category)
     {
-        // Create Form Request
+        $category->delete();
+        return redirect()->route('admin::category@index');
     }
-
-
-
-
 
 }
