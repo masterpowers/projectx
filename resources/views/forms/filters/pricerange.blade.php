@@ -41,8 +41,17 @@ sliders[i].noUiSlider.on('change', function( valucalculatores, handle ) {
 });
 
 }
-$('.pinner').pushpin({ top: 130,
-      bottom: 1640,
-      offset: 70 });
+
+var pinnedheight = $('.pinner').offset().top;
+var windowHeight = $(window).height();
+var footerheight = $('footer').offset().top;
+var total = footerheight - (windowHeight+pinnedheight);
+if (total >= windowHeight) {
+$('.pinner').pushpin({ top: pinnedheight,
+      bottom: total,
+      offset: 70 });	
+}
+
+
 </script>
 @endsection
