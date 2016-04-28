@@ -44,12 +44,16 @@ sliders[i].noUiSlider.on('change', function( valucalculatores, handle ) {
 
 var pinnedheight = $('.pinner').offset().top;
 var windowHeight = $(window).height();
+var windowWidth = $(window).width();
 var footerheight = $('footer').offset().top;
 var total = footerheight - (windowHeight+pinnedheight);
 if (total >= windowHeight) {
 $('.pinner').pushpin({ top: pinnedheight,
       bottom: total,
       offset: 70 });	
+}
+if(windowWidth <= 1024){
+	$('.pinner').css('width', '350px');
 }
 
 
