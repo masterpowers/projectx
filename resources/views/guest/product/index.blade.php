@@ -54,11 +54,7 @@
 @include('partials.pagination.product', ['products' => $products])
 <!-- No Product Results From Query -->
 @else
-<div class="row">
-<div class="col s12 center">
-<h2 class="amber-text text-lighten-2 center">WHOOPS! NO RESULT!</h2>
-</div>
-</div>
+@include('errors.noresult')
 @endif
 <!-- End If -->
 </div>
