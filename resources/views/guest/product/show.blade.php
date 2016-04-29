@@ -49,12 +49,14 @@
 		    @endif
 		</ul>
 </div>
+
 </div><!-- END of Right Div Col -->
 
 </div>
 <div class="divider"></div>
 <div class="row section container">
-    <h5>Rate this Product:</h5>
+    
+    @include('partials.comment.product')
     
 </div>
 

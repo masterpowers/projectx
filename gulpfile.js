@@ -64,8 +64,8 @@ elixir(function(mix) {
 		'materialize/character_counter.js',
 		'materialize/date_picker/picker.js',
 		'materialize/date_picker/picker.date.js',
-        'nouislider.js'
-		// 'jquery.star.rating.js',
+        'nouislider.js',
+		'jquery.star.rating.js',
 		// 'star.js'
 		// 'materialize-tags.js',
 		

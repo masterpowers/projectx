@@ -36,9 +36,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $categories = $product->categories;
         $product->increment('views');
-        return view()->make('guest.product.show')->with(compact('product', 'categories'));
+        $product = $product->load(['reviews.user','categories']);
+        
+        return view()->make('guest.product.show')->with(compact('product'));
     }
 
     private function appendQueryStrings($products)

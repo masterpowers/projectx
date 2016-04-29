@@ -13,15 +13,6 @@ use Validator;
 
 class ReviewController extends Controller
 {
-    public function index()
-    {
-        $reviews = \Auth::user()->with('reviews')->get();
-        return view('user.review.index')->with(compact('reviews'));
-    }
-    public function create()
-    {
-        return view('user.review.create');
-    }
 
     public function store(Product $product, Request $request)
     {
@@ -33,29 +24,11 @@ class ReviewController extends Controller
         $validator = Validator::make( $input, $review->getCreateRules());
         if ($validator->passes()) {
         $review->storeReviewForProduct($product->id, $input['comment'], $input['rating']);
-        return redirect()->route('product::show',['id' => $product->id]);
+        return redirect()->route('guest::product@show',['slug' => $product->slug]);
         }
-    return redirect()->route('product::show',['id' => $product->id])->withErrors($validator)->withInput();
+    return redirect()->route('guest::product@show',['slug' => $product->slug])->withErrors($validator)->withInput();
     }
 
-    public function show()
-    {
-        return view('user.review.show');
-    }
-
-    public function edit()
-    {
-        return view('user.review.edit');
-    }
-
-    public function update()
-    {
-        //
-    }
-
-    public function destroy()
-    {
-        //
-    }
+    
 
 }

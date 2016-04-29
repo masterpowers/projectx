@@ -123,13 +123,9 @@ Route::group(['middleware' => 'web'], function () {
             'as'         => 'review@',
             'prefix'     => '/reviews'
             ],function(){
-            Route::get('/', ['as' => 'index', 'uses' => 'ReviewController@index']);
-                Route::post('/', ['as' => 'store', 'uses' => 'ReviewController@store']);
-                Route::get('/create', ['as' => 'create', 'uses' => 'ReviewController@create']);
-                Route::get('/{product}', ['as' => 'show', 'uses' => 'ReviewController@show']);
-                Route::get('/{product}/edit', ['as' => 'edit', 'uses' => 'ReviewController@edit']);
-                Route::patch('/{product}', ['as' => 'update', 'uses' => 'ReviewController@update']);
-                Route::get('/{product}/delete', ['as' => 'delete', 'uses' => 'ReviewController@destroy']);
+            
+                Route::post('/{product}', ['as' => 'store', 'uses' => 'ReviewController@store']);
+                
         });
     });
 });
